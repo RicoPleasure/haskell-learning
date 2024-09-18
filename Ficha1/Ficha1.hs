@@ -16,7 +16,7 @@ oneName list = if null list then "The list cannot be empty" else  "So your name 
 
 -- (d)
 
-lastName ys = if null ys then 0 else length(last ys)
+lastName ys = if null ys then 0 else length (last ys)
 
 -- (e)
 
@@ -25,7 +25,14 @@ inString w str = w `elem` str
 
 -- (f) Pensei
 
+listaParImpar :: [(Int, Int)] -> [(Int, Int)] 
+listaParImpar xm 
+    | even (length xm) = tail xm
+    | odd (length xm) = init xm
+
 -- (g) Pensei
+
+
 
 -- (h) Pensei
 
@@ -35,7 +42,7 @@ inString w str = w `elem` str
 
 -- (k) 
 
-inicial ws = head(head ws) : ". " ++ last ws
+inicial ws = head (head ws) : ". " ++ last ws
 
 -- (l)
 
@@ -50,15 +57,25 @@ ultimo :: [(Int, Int)] -> Int
 ultimo la
     | null la   = 0
     | otherwise = fst (last la) + snd (last la)
-    
+
 
 -- (n)
 
 pessoas :: [(String,Int)] -> String
-pessoas pa 
+pessoas pa
     | snd (head pa) > snd (last pa) = fst (last pa)
     | snd (last pa) > snd (head pa) = fst (head pa)
     | snd (head pa) == snd (last pa) = "They have the same age"
     | otherwise = ""
-    
+
 -- (o)
+
+lados :: (Int,Int) -> Int -> (Int,Int)
+lados (x,y) lado = (x + lado, y)
+
+-- (p)
+
+quadrados :: ((Int,Int), Int) -> ((Int,Int), Int) -> Int 
+quadrados ((x,y),z) ((a,b),c)
+    | y >= b = z*z
+    | b > y = c*c
