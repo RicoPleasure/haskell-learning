@@ -1,6 +1,8 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Use uncurry" #-}
 import Distribution.Simple.Utils (xargs)
+import Language.Haskell.TH (prim)
+import Data.ByteString.Builder.Prim (primFixed)
 
 -- (a)
 
@@ -23,22 +25,56 @@ lastName ys = if null ys then 0 else length (last ys)
 inString :: Char -> String -> Bool
 inString w str = w `elem` str
 
--- (f) Pensei
+-- (f) 
 
 listaParImpar :: [(Int, Int)] -> [(Int, Int)] 
 listaParImpar xm 
     | even (length xm) = tail xm
     | odd (length xm) = init xm
 
--- (g) Pensei
+-- (g) 
+-- i
+juncaoListas :: [Int] -> [Int]-> [Int]  
+juncaoListas primeiraLista segundaLista = primeiraLista ++ segundaLista
 
+--ii
+numeroAlunos :: [Int] -> [Int] -> Int
+numeroAlunos primeiraLista segundaLista = length (juncaoListas primeiraLista segundaLista)
 
+--iii
+diferencaAlunos :: [Int] -> [Int] -> Int
+diferencaAlunos primeiraLista segundaLista 
+    | primeiraLista > segundaLista = length primeiraLista - length segundaLista
+    | segundaLista > primeiraLista = length segundaLista - length primeiraLista
+    | otherwise = 0
+    
+--iv
+pertenceAoTurno :: [Int] -> Int -> String
+pertenceAoTurno listaAlunos numeroAluno 
+    | numeroAluno `elem` listaAlunos = "Yes"
+    | otherwise = "No"
 
--- (h) Pensei
+-- (h) 
 
--- (i) Pensei
+juntaListas :: [Int] -> [Int] -> [Int]
+juntaListas primeiraLista segundaLista 
+    | length primeiraLista > length segundaLista = segundaLista ++ primeiraLista
+    | length segundaLista > length primeiraLista = primeiraLista ++ segundaLista
+    | otherwise = primeiraLista ++ segundaLista
 
--- (j) Pensei
+-- (i) 
+
+juntaListasHead :: [Int] -> [Int] -> (Int, [Int])
+juntaListasHead xy xs = (head xy, xs)
+
+-- (j) 
+
+parListas :: [Int] -> [Int] -> [Int]
+parListas primeiraLista segundaLista 
+    | head primeiraLista > head segundaLista = segundaLista ++ primeiraLista
+    | head segundaLista > head primeiraLista = primeiraLista ++ segundaLista
+    | otherwise = primeiraLista ++ segundaLista
+
 
 -- (k) 
 
