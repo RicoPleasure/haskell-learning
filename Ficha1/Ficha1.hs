@@ -18,6 +18,7 @@ oneName list = if null list then "The list cannot be empty" else  "So your name 
 
 -- (d)
 
+lastName :: Foldable t => [t a] -> Int
 lastName ys = if null ys then 0 else length (last ys)
 
 -- (e)
