@@ -38,7 +38,7 @@ type LadoJanela = Double
 -- Exercício 2
 
 move :: Ponto -> Movimento -> LadoJanela -> Ponto
-move (positionX, positionY) direction ladoJanela = case direction of 
+move (positionX, positionY) direction ladoJanela = case direction of
    Norte -> (positionX, min (positionY + 1) ladoJanela)
    Sul   -> (positionX, max (positionY - 1) 0)
    Este  -> (min (positionX + 1) ladoJanela, positionY)
@@ -83,9 +83,34 @@ data Figura =
 
 -- (a) 
 
-isInside :: Ponto -> Figura -> Bool
+{- isInside :: Ponto -> Figura -> Bool
 isInside (x,y) (Circulo (xc,yc) r) = (xc-x)^2 + (yc-y)^2 <= r^2 
-isInside (x,y) (Quadrado (x1,y1) lado) = x <= x1 + lado && y <= y1 + lado
-isInside (x,y) (Rectangulo (px1,py1) (px2,py2) = 
+isInside (x,y) (Quadrado (x1,y1) lado) = x <= x1 + lado && x >= x1 && y <= y1 + lado && y >= y1
+isInside (x,y) (Rectangulo (x1,y1) (x2,y2)) = 
+  x >= min x1 x2 && x <= max x1 x2 &&
+  y >= min y1 y2 && y <= max y1 y2 -}
 
--- ACABAR O RESTO EM CASA
+
+-- (b)
+
+{- menorQuadrado :: Figura -> Figura
+menorQuadrado (Circulo (xc, yc) r) = Quadrado (xc-r,yc-r) (2*r)
+menorQuadrado (Quadrado (x1,y1) lado) = Quadrado (x1,y1) lado
+menorQuadrado (Rectangulo (x1,y1) (x2,y2)) = Quadrado (min x1 x2, min x1 y2) (max (abs (x2 - x1)) (abs (y2 - y1)))
+
+-- (c)
+
+maiorCirculo :: Figura -> Figura
+maiorCirculo (Circulo (xc, yc) r) = Circulo (xc, yc) r
+maiorCirculo (Quadrado (x1,y1) lado) = Circulo (x1 + lado / 2,y1 + lado/2) (dist (x1 + (lado/2),y1 + (lado/2)) (x1,y1))
+-- Não vou fazer o rectangulo pois exige pensar demais do mesmo
+ -}
+-- (d)
+
+{- contida :: Figura -> Figura -> Bool
+contida (Circulo (xc1, yc1) r1) (Circulo (xc, yc) r) =
+contida (Quadrado (x1,y1) lado) (Quadrado (x2,y2) lado) =  -}
+
+-- Exercício 9
+
+-- OK, LOL
